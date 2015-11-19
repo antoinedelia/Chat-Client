@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Emission implements Runnable {
 
-	private PrintWriter out = null;
+	private PrintWriter out;
+	private String message = null;
 	private Scanner sc = null;
 
 
@@ -18,7 +19,7 @@ public class Emission implements Runnable {
 
 		while(true)
 		{
-			String message = sc.nextLine();
+			message = sc.nextLine();
 			out.println(message);
 			out.flush();
 		}

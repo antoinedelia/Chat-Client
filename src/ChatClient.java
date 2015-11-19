@@ -22,9 +22,6 @@ public class ChatClient implements Runnable {
 		try{
 			out = new PrintWriter(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-			System.out.print("Votre message : ");
-			Scanner sc = new Scanner(System.in);
 			
 			Thread thread3 = new Thread(new Emission(out));
 			thread3.start();

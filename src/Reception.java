@@ -3,9 +3,9 @@ import java.io.IOException;
 
 public class Reception implements Runnable {
 
-	private BufferedReader in = null;
-	private String login = null;
-	
+	private BufferedReader in;
+	private String message, login = null;
+
 	public Reception (BufferedReader in, String login)
 	{
 		this.in  = in;
@@ -14,15 +14,16 @@ public class Reception implements Runnable {
 
 	@Override
 	public void run() {
-		
+
 		while(true)
 		{
-			
+
 			try {
-				String message = in.readLine();
-				System.out.println(login + " : " + message);
+				message = in.readLine();
+				if(message != null && !message.isEmpty())
+					System.out.println(message);
 			} catch (IOException e) {e.printStackTrace();}
-			
+
 		}
 
 	}

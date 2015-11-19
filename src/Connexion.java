@@ -29,8 +29,6 @@ public class Connexion implements Runnable {
 			out.println(login);
 			out.flush();
 
-			sc.close();
-
 			Thread thread2 = new Thread(new ChatClient(socket, login));
 			thread2.start();
 
