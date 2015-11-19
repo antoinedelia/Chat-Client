@@ -10,7 +10,6 @@ public class ChatClient implements Runnable {
 	private PrintWriter out = null;
 	private BufferedReader in = null;
 	private String login;
-	private String input = "";
 
 	public ChatClient(Socket s, String login)
 	{
@@ -23,26 +22,14 @@ public class ChatClient implements Runnable {
 		try{
 			out = new PrintWriter(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+			System.out.print("Votre message : ");
+			Scanner sc = new Scanner(System.in);
 			
-			while(!input.equals("stop"))
-			{	
-				System.out.print("Votre message : ");
-				Scanner sc = new Scanner(System.in);
-				System.out.println(in.readLine());
-				System.out.println("Test1");				
-				input = sc.nextLine();
-				System.out.println("Test3");
-				out.println(input);
-				System.out.print("Test4");
-				out.flush();
-				System.out.print("Test5");
-				sc.close();
-			}
-			
-			//			Thread thread4 = new Thread(new );
-			//			thread4.start();
-			//			Thread thread5 = new Thread(new );
-			//			thread5.start();
+			Thread thread3 = new Thread(new Emission(out));
+			thread3.start();
+			Thread thread4 = new Thread(new Reception(in, login));
+			thread4.start();
 
 		} catch(Exception e){e.printStackTrace();}
 
