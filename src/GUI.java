@@ -1,4 +1,3 @@
-import java.awt.Frame;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.WindowAdapter;

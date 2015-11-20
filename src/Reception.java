@@ -4,12 +4,11 @@ import java.io.IOException;
 public class Reception implements Runnable {
 
 	private BufferedReader in;
-	private String message, login = null;
+	private String message;
 
 	public Reception (BufferedReader in, String login)
 	{
 		this.in  = in;
-		this.login = login;
 	}
 
 	@Override

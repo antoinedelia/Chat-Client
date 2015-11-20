@@ -9,7 +9,6 @@ public class Connexion implements Runnable {
 	private Socket socket = null;
 	private PrintWriter out = null;
 	private BufferedReader in = null;
-	private boolean isLogin = false;
 	private String login = null;
 
 	public Connexion(Socket s)

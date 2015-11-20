@@ -9,7 +9,7 @@ public class ClientSocket implements Cypher{
 		//GUI gui = new GUI();
 		
 		try {
-			socket = new Socket("localhost", 68);
+			socket = new Socket("localhost", 63);
 			Thread thread1 = new Thread(new Connexion(socket));
 			thread1.start();
 		} catch (IOException e) {
