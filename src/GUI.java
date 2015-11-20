@@ -3,7 +3,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,7 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class GUI extends JFrame implements ActionListener, KeyListener{
+public class GUI extends JFrame implements ActionListener{
 	private JLabel labelLogin;
 	private JTextField textFieldLogin;
 	private JButton buttonLogin;
@@ -22,7 +21,7 @@ public class GUI extends JFrame implements ActionListener, KeyListener{
 	private JTextField textFieldMessage;
 	private JButton buttonMessage;
 
-	private String login, message = "";
+	private String login, message, lastMessage;
 
 	/** Construction de la fenêtre d'affichage principale */
 	public GUI() {
@@ -30,6 +29,9 @@ public class GUI extends JFrame implements ActionListener, KeyListener{
 	}
 
 	private void initialize() {
+		login = "undefined";
+		lastMessage = "";
+		message = "";
 		setSize(700, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -91,6 +93,7 @@ public class GUI extends JFrame implements ActionListener, KeyListener{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				lastMessage = message;
 				message = textFieldMessage.getText();
 				textFieldMessage.setText("");
 			}
@@ -104,7 +107,9 @@ public class GUI extends JFrame implements ActionListener, KeyListener{
 		buttonMessage.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				lastMessage = message;
 				message = textFieldMessage.getText();
+				System.out.println("Message : " + message);
 				textFieldMessage.setText("");
 
 			}
@@ -134,22 +139,8 @@ public class GUI extends JFrame implements ActionListener, KeyListener{
 		textArea.append(s);
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
+	public String getLastMessage() {
+		return this.lastMessage;
 	}
 
 }

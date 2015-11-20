@@ -9,12 +9,14 @@ public class ChatClient implements Runnable {
 	private PrintWriter out = null;
 	private BufferedReader in = null;
 	private String login;
+	private GUI gui;
 	//private String messageEnvoyé, messageReçu = null;
 
-	public ChatClient(Socket s, String login)
+	public ChatClient(Socket s, String login, GUI gui)
 	{
 		this.socket = s;
 		this.login = login;
+		this.gui = gui;
 	}
 
 	@Override
@@ -24,9 +26,9 @@ public class ChatClient implements Runnable {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			//Scanner sc = new Scanner(System.in);
 			
-			Thread thread3 = new Thread(new Emission(out));
+			Thread thread3 = new Thread(new Emission(out, gui));
 			thread3.start();
-			Thread thread4 = new Thread(new Reception(in, login));
+			Thread thread4 = new Thread(new Reception(in, login, gui));
 			thread4.start();
 
 		} catch(Exception e){e.printStackTrace();}

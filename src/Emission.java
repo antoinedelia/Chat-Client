@@ -1,30 +1,39 @@
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class Emission implements Runnable {
 
 	private PrintWriter out;
-	private String message = null;
-	private Scanner sc = null;
+	private String message, lastMessage;
+	//private Scanner sc = null;
+	private GUI gui;
 
 
-	public Emission(PrintWriter out) {
+	public Emission(PrintWriter out, GUI gui) {
 		this.out  = out;
+		this.gui = gui;
 	}
 
 	@Override
 	public void run() {
 
-		sc = new Scanner(System.in);
+		message = "";
+		lastMessage = "";
 
 		while(true)
 		{
-			message = sc.nextLine();
-			out.println(message);
-			out.flush();
+			while(lastMessage.equals(message))
+			{
+				message = gui.getMessage();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {e.printStackTrace();}
+			}
+			if(!message.equals(lastMessage))
+			{
+				lastMessage = message;
+				out.println(message);
+				out.flush();
+			}
 		}
-
-
 	}
-
 }
