@@ -6,6 +6,7 @@ public class ClientSocket implements Cypher{
 	public static void main(String[] args) {
 
 		Socket socket = null;
+		//Creating our GUI
 		GUI gui = new GUI();
 		
 		try {
@@ -15,19 +16,17 @@ public class ClientSocket implements Cypher{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-
-
 	}
 
 	@Override
 	public String encode(String string) {
+		//Not implemented yet
 		return null;
 	}
 
 	@Override
 	public String decode(String string) {
+		//Not implemented yet
 		return null;
 	}
-
 }

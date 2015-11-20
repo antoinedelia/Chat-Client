@@ -28,6 +28,7 @@ public class Emission implements Runnable {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
+			//Send message to server
 			if(!message.equals(lastMessage))
 			{
 				lastMessage = message;

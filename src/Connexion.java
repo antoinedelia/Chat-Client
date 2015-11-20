@@ -22,18 +22,18 @@ public class Connexion implements Runnable {
 		try{
 			out = new PrintWriter(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			//Scanner sc = new Scanner(System.in);
 
 			System.out.println(in.readLine());
 			while(login.equals("undefined"))
 			{
+				//Getting the login from the gui
 				login = gui.getLogin();
 				Thread.sleep(100);
 			}
-			//login = sc.nextLine();
 			out.println(login);
 			out.flush();
 
+			//Create the client chat
 			Thread thread2 = new Thread(new ChatClient(socket, login, gui));
 			thread2.start();
 

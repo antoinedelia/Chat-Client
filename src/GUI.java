@@ -1,7 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,19 +21,22 @@ public class GUI extends JFrame implements ActionListener{
 
 	private String login, message, lastMessage;
 
-	/** Construction de la fenêtre d'affichage principale */
 	public GUI() {
 		initialize();
 	}
 
 	private void initialize() {
+		//Setting the value of variables
 		login = "undefined";
 		lastMessage = "";
 		message = "";
+		
+		//Basic GUI settings
 		setSize(700, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
+		//LOGIN
 		labelLogin = new JLabel("Login");
 		labelLogin.setBounds(31, 31, 55, 31);
 		labelLogin.setVerticalAlignment(SwingConstants.TOP);
@@ -46,6 +47,7 @@ public class GUI extends JFrame implements ActionListener{
 		getContentPane().add(textFieldLogin);
 		textFieldLogin.setColumns(10);
 
+		//When the user press the "Enter" key
 		textFieldLogin.addActionListener( new ActionListener() {
 
 			@Override
@@ -72,7 +74,9 @@ public class GUI extends JFrame implements ActionListener{
 				buttonMessage.setEnabled(true);
 			}
 		});
-
+		
+		
+		//MESSAGES
 		textArea = new JTextArea();
 		textArea.setRows(10);
 		textArea.setBounds(98, 66, 462, 417);
@@ -89,6 +93,7 @@ public class GUI extends JFrame implements ActionListener{
 		textFieldMessage.setColumns(10);
 		textFieldMessage.setEnabled(false);
 
+		//When the user press the "Enter" key
 		textFieldMessage.addActionListener( new ActionListener() {
 
 			@Override
@@ -111,7 +116,6 @@ public class GUI extends JFrame implements ActionListener{
 				message = textFieldMessage.getText();
 				System.out.println("Message : " + message);
 				textFieldMessage.setText("");
-
 			}
 		});
 
@@ -120,9 +124,7 @@ public class GUI extends JFrame implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
+	public void actionPerformed(ActionEvent e) {}
 
 	public String getLogin()
 	{

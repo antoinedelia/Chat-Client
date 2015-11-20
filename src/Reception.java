@@ -24,6 +24,7 @@ public class Reception implements Runnable {
 				if(message != null && !message.isEmpty())
 					//System.out.println(message);
 				if(!gui.getLastMessage().equals(message))
+					//Receive message from server and send it to all clients
 					gui.setMessages(message+"\n");
 			} catch (IOException e) {e.printStackTrace();}
 
