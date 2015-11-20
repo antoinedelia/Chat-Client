@@ -10,10 +10,12 @@ public class Connexion implements Runnable {
 	private PrintWriter out = null;
 	private BufferedReader in = null;
 	private String login = null;
+	private GUI gui;
 
-	public Connexion(Socket s)
+	public Connexion(Socket s, GUI gui)
 	{
 		this.socket = s;
+		this.gui = gui;
 	}
 
 	@Override
@@ -24,7 +26,8 @@ public class Connexion implements Runnable {
 			Scanner sc = new Scanner(System.in);
 
 			System.out.println(in.readLine());
-			login = sc.nextLine();
+			login = gui.getMessage();
+			//login = sc.nextLine();
 			out.println(login);
 			out.flush();
 

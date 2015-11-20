@@ -10,7 +10,7 @@ public class ClientSocket implements Cypher{
 		
 		try {
 			socket = new Socket("localhost", 63);
-			Thread thread1 = new Thread(new Connexion(socket));
+			Thread thread1 = new Thread(new Connexion(socket, gui));
 			thread1.start();
 		} catch (IOException e) {
 			e.printStackTrace();
