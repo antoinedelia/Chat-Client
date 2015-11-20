@@ -6,7 +6,7 @@ public class ClientSocket implements Cypher{
 	public static void main(String[] args) {
 
 		Socket socket = null;
-		//GUI gui = new GUI();
+		GUI gui = new GUI();
 		
 		try {
 			socket = new Socket("localhost", 63);

@@ -9,6 +9,7 @@ public class ChatClient implements Runnable {
 	private PrintWriter out = null;
 	private BufferedReader in = null;
 	private String login;
+	//private String messageEnvoyé, messageReçu = null;
 
 	public ChatClient(Socket s, String login)
 	{
@@ -21,6 +22,7 @@ public class ChatClient implements Runnable {
 		try{
 			out = new PrintWriter(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			//Scanner sc = new Scanner(System.in);
 			
 			Thread thread3 = new Thread(new Emission(out));
 			thread3.start();
