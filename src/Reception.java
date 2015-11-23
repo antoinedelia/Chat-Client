@@ -26,10 +26,25 @@ public class Reception implements Runnable {
 				if(!gui.getLastMessage().equals(message))
 					//Receive message from server and send it to all clients
 					gui.setMessages(message+"\n");
-			} catch (IOException e) {e.printStackTrace();}
+			} catch (IOException e) {
+				stop();
+				e.printStackTrace();
+			}
 
 		}
 
+	}
+
+	private void stop() {
+		gui.setMessages("Le serveur est hors ligne...");
+		Thread.interrupted();
+		while(!Thread.interrupted()){}
+		try {
+			in.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 }

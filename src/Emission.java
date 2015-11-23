@@ -21,6 +21,7 @@ public class Emission implements Runnable {
 
 		while(true)
 		{
+			//Can't send same message twice (bug but prevent spam)
 			while(lastMessage.equals(message))
 			{
 				message = gui.getMessage();

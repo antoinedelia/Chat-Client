@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -30,10 +31,22 @@ public class ChatClient implements Runnable {
 			Thread thread4 = new Thread(new Reception(in, login, gui));
 			thread4.start();
 
-		} catch(Exception e){e.printStackTrace();}
+		} catch(Exception e){e.printStackTrace(); stop();}
 
 
 
+	}
+
+	private void stop() {
+		Thread.interrupted();
+		out.flush();
+		try {
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
